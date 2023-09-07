@@ -12,8 +12,8 @@ pipeline {
         stage('Pull code from GitHub') {
             steps {
                 dir('test') {
-                    git branch: 'webinar',
-                        url: 'https://github.com/browserstack/browserstack-examples-testng'
+                    git branch: 'main',
+                        url: 'https://github.com/sanketsmali03/bstack-demo-web-regression.git'
                 }
             }
         }
@@ -25,17 +25,13 @@ pipeline {
                         dir('test') {
                             sh '''
                                 #!/bin/bash -e
-
-                                git checkout webinar
-                                mvn clean test -P parallel
-                                export PERCY_TOKEN=${PERCY_TOKEN} 
-                                export PERCY_BRANCH=testing
-                                export PERCY_TARGET_BRANCH=main
+                                git checkout main
+                                export PERCY_TOKEN=${PERCY_TOKEN}
                                 source ~/.bashrc
                                 nvm use 16
                                 npm install
-                                export BROWSERSTACK_CONFIG_FILE=src/test/resources/conf/capabilities/bstack-single.yml
-                                npm run percy:test
+                                export BROWSERSTACK_CONFIG_FILE=src/test/resources/conf/capabilities/bstack-parallel-browsers-regression.yml
+                                npx percy exec --verbose  --  mvn test -P bstack-parallel-browsers
                             '''
                         }
                     }
