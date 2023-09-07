@@ -26,7 +26,7 @@ pipeline {
                             sh '''
                                 #!/bin/bash -e
                                 git checkout main
-                                export PERCY_TOKEN=${PERCY_TOKEN}
+                                export PERCY_TOKEN=web_adae014153c9a18a59d4558ed6bca0f5ad0806af3c9bfe4ec3f98bf1cb978631
                                 source ~/.bashrc
                                 nvm use 16
                                 npm install
