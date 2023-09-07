@@ -1,0 +1,22 @@
+{
+  "name": "browserstack-examples-test-ng",
+  "version": "1.0.0",
+  "description": "This project contains examples to run appium tests locally and on BrowserStack",
+  "devDependencies": {
+    "@percy/cli": "^1.27.1"
+  },
+  "scripts": {
+    "percy:test": "percy exec -- mvn clean test -P percy",
+    "percy:test-local": "percy exec -- mvn clean test -P bstack-local"
+  },
+  "keywords": [
+    "appium",
+    "browserstack",
+    "webdriverio"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "browserstack-local": "^1.4.9"
+  }
+}
