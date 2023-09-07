@@ -43,7 +43,7 @@ public class TestBase {
         }
         percy = new Percy(driver);
         if (StringUtils.equalsIgnoreCase(System.getProperty("browserstack-local"),"true")) {
-            driver.get("http://localhost:3000");
+            driver.get("https://bstackdemo.com");
             driver.manage().window().maximize();
         } else {
             driver.get("https://bstackdemo.com");
